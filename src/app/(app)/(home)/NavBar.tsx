@@ -67,13 +67,13 @@ export const NavBar = () => {
 
       <div className="hidden lg:flex">
         <Button asChild variant={"secondary"} className="border-l border-t-0 border-b-0 border-r-0 rounded-none px-12 h-full bg-white hover:bg-pink-400 transition-colors text-lg">
-          <Link href={"/sign-in"}>
+          <Link prefetch href={"/sign-in"}>
             Log in
           </Link>
         </Button>
 
         <Button asChild variant={"secondary"} className="border-l border-t-0 border-b-0 border-r-0 rounded-none px-12 h-full bg-black text-white hover:bg-yellow-400 hover:text-black transition-colors text-lg">
-          <Link href={"/sign-up"}>
+          <Link prefetch href={"/sign-up"}>
             Start selling
           </Link>
         </Button>
