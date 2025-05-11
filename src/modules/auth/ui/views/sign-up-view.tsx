@@ -28,6 +28,7 @@ export const SingUpView = () => {
   const router = useRouter()
   const trpc = useTRPC()
   const queryClient = useQueryClient();
+  
   const register = useMutation(trpc.auth.register.mutationOptions({
     onError: (error) => {
       toast.error(error.message)
