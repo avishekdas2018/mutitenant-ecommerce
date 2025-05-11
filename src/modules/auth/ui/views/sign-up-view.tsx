@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
@@ -27,16 +27,16 @@ const poppins = Poppins({
 export const SingUpView = () => {
   const router = useRouter()
   const trpc = useTRPC()
+  const queryClient = useQueryClient();
   const register = useMutation(trpc.auth.register.mutationOptions({
     onError: (error) => {
       toast.error(error.message)
     },
-    onSuccess: () => {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(trpc.auth.session.queryFilter())
       router.push("/")
     }
   }))
-
-
 
 
   const form = useForm<z.infer<typeof registerSchema>>({
