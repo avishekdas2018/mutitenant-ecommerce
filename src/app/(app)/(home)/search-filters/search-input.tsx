@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { BookmarkCheckIcon, ListFilterIcon, SearchIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 import { CategoriesSidebar } from "./category-sidebar";
 import { useState } from "react";
@@ -10,13 +10,15 @@ import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
+
 interface SearchInputProps {
   disabled?: boolean;
-
 }
+
 
 export const SearchInput = ({ disabled }: SearchInputProps) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   const trpc = useTRPC()
   const session = useQuery(trpc.auth.session.queryOptions())
 
